@@ -8,6 +8,11 @@
         "role":"user",
         "groups":["session", "notifications", "backoffice_users", "files", "status"],
         "privileges":["post_passwordrecovery", "post_confirmemail"]
+    },
+    {
+        "role":"teacher",
+        "groups":["session", "notifications", "backoffice_users", "files", "status"],
+        "privileges":["post_passwordrecovery", "post_confirmemail"]
     }
 
 ]
