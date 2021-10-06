@@ -103,7 +103,7 @@ class Model:
         offset=None,
         orderBy=None,
         deleted=False,
-        join=None,
+        join=None
     ):
         """
         The getAll() method process a query and returns all found values.

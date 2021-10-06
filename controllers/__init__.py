@@ -10,6 +10,11 @@ from controllers.FileS3Controller import FileS3Controller
 from controllers.PasswordRecoveryController import PasswordRecoveryController
 from controllers.ConfirmEmailController import ConfirmEmailController
 from controllers.SessionController import SessionController
+from controllers.PeriodController import PeriodController
+from controllers.CourseController import CourseController
+from controllers.GroupController import GroupController
+from controllers.User_GroupController import User_GroupController
+
 
 testController = TestController()
 healthcheckController = HealthCheckController()
@@ -23,3 +28,7 @@ files3Controller = FileS3Controller()
 passwordrecoveryController = PasswordRecoveryController()
 confirmemailController = ConfirmEmailController()
 sessionController = SessionController()
+periodController = PeriodController()
+courseController = CourseController()
+groupController = GroupController()
+user_groupController = User_GroupController()

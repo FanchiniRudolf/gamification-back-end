@@ -10,8 +10,11 @@ class User(Base, Model):
     username = Column(String(100), nullable=False)
     password = Column(String(300), nullable=False)
     email = Column(String(100), nullable=False)
+    name = Column(String(45), default=None)
+    last_name = Column(String(45), default=None)
+    school_id = Column(String(45), default=None)
     phone = Column(String(15), default=None)
-    role_id = Column(BigInteger, ForeignKey(Role.id), default=Role.USER)
+    role_id = Column(BigInteger, ForeignKey(Role.id), default=Role.STUDENT)
     otp = Column(String(6), default=None)
     otp_time = Column(DateTime, default=None)
     email_confirmation_code = Column(String(6), default=None)
@@ -35,11 +38,11 @@ class User(Base, Model):
         if username:
             check_username = User.get(User.username == username)
             if check_username:
-                return True, "This username already exists"
+                return True, "Este username ya existe"
 
         if email:
             check_email = User.get(User.email == email)
             if check_email:
-                return True, "This email already has an account"
+                return True, "Ya hay una cuenta asociada a este email"
 
         return False, ""

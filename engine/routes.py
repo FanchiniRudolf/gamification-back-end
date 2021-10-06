@@ -24,6 +24,16 @@ class RouteLoader():
         
 
     def loadRoutes(self):
+        self.server.add_route(self.context_prefix + '/periods', periodController)
+        self.server.add_route(self.context_prefix + '/periods/{id:int}', periodController)
+        self.server.add_route(self.context_prefix + '/courses', courseController)
+        self.server.add_route(self.context_prefix + '/courses/{id:int}', courseController)
+        self.server.add_route(self.context_prefix + '/groups', groupController)
+        self.server.add_route(self.context_prefix + '/groups/{id:int}', groupController)
+        self.server.add_route(self.context_prefix + '/groups/acces_code/{id:int}', groupController, suffix="otp")
+        self.server.add_route(self.context_prefix + '/users_groups', user_groupController)
+        self.server.add_route(self.context_prefix + '/users_groups/{id:int}', user_groupController)
+
         self.server.add_route(self.context_prefix + '/test', testController)
         self.server.add_route(self.context_prefix + '/health-check/{action}', healthcheckController) #ping
         self.server.add_route(self.context_prefix + '/sessions/{action}', sessionController) #login, logout

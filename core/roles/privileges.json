@@ -168,6 +168,86 @@
         "name": "delete_files_s3",
         "method": "DELETE",
         "resource": "FileS3Controller"
+    },
+    {
+        "name": "get_period",
+        "method": "GET",
+        "resource": "PeriodController"
+    },
+    {
+        "name": "post_period",
+        "method": "POST",
+        "resource": "PeriodController"
+    },
+    {
+        "name": "put_period",
+        "method": "PUT",
+        "resource": "PeriodController"
+    },
+    {
+        "name": "delete_period",
+        "method": "DELETE",
+        "resource": "PeriodController"
+    },
+    {
+        "name": "get_course",
+        "method": "GET",
+        "resource": "CourseController"
+    },
+    {
+        "name": "post_course",
+        "method": "POST",
+        "resource": "CourseController"
+    },
+    {
+        "name": "put_course",
+        "method": "PUT",
+        "resource": "CourseController"
+    },
+    {
+        "name": "delete_course",
+        "method": "DELETE",
+        "resource": "CourseController"
+    },
+    {
+        "name": "get_group",
+        "method": "GET",
+        "resource": "GroupController"
+    },
+    {
+        "name": "post_group",
+        "method": "POST",
+        "resource": "GroupController"
+    },
+    {
+        "name": "put_group",
+        "method": "PUT",
+        "resource": "GroupController"
+    },
+    {
+        "name": "delete_group",
+        "method": "DELETE",
+        "resource": "GroupController"
+    },
+    {
+        "name": "get_user_group",
+        "method": "GET",
+        "resource": "User_GroupController"
+    },
+    {
+        "name": "post_user_group",
+        "method": "POST",
+        "resource": "User_GroupController"
+    },
+    {
+        "name": "put_user_group",
+        "method": "PUT",
+        "resource": "User_GroupController"
+    },
+    {
+        "name": "delete_user_group",
+        "method": "DELETE",
+        "resource": "User_GroupController"
     }
 
 

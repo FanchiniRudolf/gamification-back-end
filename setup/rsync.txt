@@ -14,4 +14,4 @@ Host Rest-API
 y ya cuando quieran hace rsync:
 
 
-rsync --copy-links -v -a -e ssh -r /home/pachada/Documents/Projects/Restful-API Rest-API:~/api/ --exclude='.git' --exclude='.gitignore' --exclude='files/*' --exclude='config.ini'
+rsync --copy-links -v -a -e ssh -r  /mnt/c/Users/dtrej/Documents/Projects/gamification-back-end/ Ludificacion:~/gamificacion/ --exclude='.git' --exclude='.gitignore' --exclude='files/*' --exclude='config.ini'

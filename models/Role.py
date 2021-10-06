@@ -4,8 +4,8 @@ from core.Utils import Utils
 
 class Role(Base, Model):
     # Roles
-    ROOT = 1
-    USER = 2
+    TEACHER = 1
+    STUDENT = 2
 
     __tablename__ = "role"
 

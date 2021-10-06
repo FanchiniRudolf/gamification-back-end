@@ -40,6 +40,21 @@
         "privileges":[
             "get_status", "put_status", "post_status", "delete_status"
         ]
+    },
+    {
+        "group":"teacher_actions",
+        "privileges":[
+            "get_period", "put_period", "post_period", "delete_period",
+            "get_course", "put_course", "post_course", "delete_course",
+            "get_group", "put_group", "post_group", "delete_group",
+            "get_user_group", "put_user_group", "post_user_group", "delete_user_group"
+        ]
+    },
+    {
+        "group":"student_actions",
+        "privileges":[
+            "get_group", "get_user_group", "post_user_group"
+        ]
     }
     
 

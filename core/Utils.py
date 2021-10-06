@@ -79,8 +79,12 @@ class Utils:
             date = Utils.string_to_datetime(date)
 
         # Transfor the datetime object with time zone America/Mexico_City to UTC0
+        print(date)
+        print(date.tzinfo)
         if not date.tzinfo:
             date = pytz.timezone(date_tz).localize(date)
+            print(date)
+            print(date.tzinfo)
 
         return date.astimezone(pytz.utc)
 
@@ -100,7 +104,7 @@ class Utils:
             The str representation of date.
         """
         if isinstance(value, date) and not isinstance(value, datetime):
-            value = datetime(value.year, value.month, value.day)
+            return value.isoformat()
 
         today = Utils.today_in_tz()
         if (
@@ -116,7 +120,7 @@ class Utils:
             return value
 
         local_time = Utils.change_datetime_timezone_from_utc0_to_another(value)
-        return local_time.isoformat(timespec="seconds")
+        return local_time.isoformat(timespec="seconds")[:-6]
 
     @staticmethod
     def get_hashed_string(data: str) -> str:
@@ -259,14 +263,14 @@ class Utils:
         return otp
 
     @staticmethod
-    def validate_otp(user):
+    def validate_otp(otp_time):
         """
-        Validates if the otp_time of a user has not expired
+        Validates if the otp_time has not expired
 
         Parameters
         ----------
-        user: `User`
-                user to check its otp time
+        otp_time: `datetime`
+                datetime the otp was created
 
         Returns
         -------
@@ -276,7 +280,7 @@ class Utils:
         config = configparser.ConfigParser()
         config.read(Utils.get_config_ini_file_path())
         otp_expiration_time = int(config.get("EXPIRATION_TIMES", "otp"))
-        delta = datetime.utcnow() - user.otp_time
+        delta = datetime.utcnow() - otp_time
         return delta.total_seconds() / 60 < otp_expiration_time
 
     @staticmethod

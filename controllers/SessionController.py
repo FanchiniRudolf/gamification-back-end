@@ -28,14 +28,14 @@ class SessionController(Controller):
             self.response(resp, 400, error=str(exc))
             return
 
-        username = data.get("username")
+        email = data.get("email")
         password = data.get("password")
         uuid = data.get("device_uuid", "unknown")
-        if not username or not password:
-            self.response(resp, 400, error="Username and password are required")
+        if not email or not password:
+            self.response(resp, 400, error="email and password are required")
             return
 
-        session = Authenticator.login(username, password, uuid)
+        session = Authenticator.login(email, password, uuid)
         if not session:
             self.response(resp, 401, error="Invalid credentials")
             return

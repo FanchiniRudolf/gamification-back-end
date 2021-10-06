@@ -1,0 +1,23 @@
+{
+    "name": "get_user_group",
+    "method": "GET",
+    "resource": "User_GroupController"
+},
+{
+    "name": "post_user_group",
+    "method": "POST",
+    "resource": "User_GroupController"
+},
+{
+    "name": "put_user_group",
+    "method": "PUT",
+    "resource": "User_GroupController"
+},
+{
+    "name": "delete_user_group",
+    "method": "DELETE",
+    "resource": "User_GroupController"
+}
+
+
+ "get_user_group", "put_user_group", "post_user_group", "delete_user_group"

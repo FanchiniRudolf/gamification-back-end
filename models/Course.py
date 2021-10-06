@@ -11,7 +11,7 @@ class Course(Base, Model):
     teacher_id = Column(BigInteger, ForeignKey(User.id), nullable=False)
     created = Column(DateTime, default=Utils.time())
     updated = Column(DateTime, default=Utils.time(), onupdate=Utils.time())
-    enable = Column(mysql.TINYINT(1, default=1))
+    enable = Column(mysql.TINYINT(1), default=1)
 
     teacher = relationship(User)
 

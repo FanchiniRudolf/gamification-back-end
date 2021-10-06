@@ -2,6 +2,7 @@ from core.Model import *
 from core.Utils import Utils
 from models.User import User
 
+
 class Period(Base, Model):
     __tablename__ = 'period'
 
@@ -16,4 +17,9 @@ class Period(Base, Model):
 
     teacher = relationship(User)
 
-    formatters = {"created": Utils.date_formatter, "updated": Utils.date_formatter}
+    formatters = {
+        "created": Utils.date_formatter, 
+        "updated": Utils.date_formatter,
+        "start_date": Utils.date_formatter,
+        "end_date": Utils.date_formatter
+    }

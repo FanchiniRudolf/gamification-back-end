@@ -1,5 +1,5 @@
 from core.Controller import Controller, Utils, Request, Response, json, datetime
-from models.User import User
+from models.User import User, Role
 from core.classes.Authenticator import Authenticator
 
 
@@ -18,9 +18,11 @@ class UserController(Controller):
             print(exc)
             self.response(resp, 400, error=str(exc))
 
-        if data.get("username") and data.get("password"):
+        if data.get("username") and data.get("password") and data.get("email"):
             return self.create_user(req, resp, data)
-
+        
+        self.response(resp, 400, error="Se necesita el 'username', 'password' y 'email' para crear a un nuevo usuario")
+        
     def on_put(self, req: Request, resp: Response, id: int = None):
         super().generic_on_put(req, resp, User, id)
 
@@ -45,24 +47,27 @@ class UserController(Controller):
         session = Authenticator.login(
             user.email, data.get("password"), data.get("device_uuid", "unknown")
         )
+        
         data = {
             "session": Utils.serialize_model(
                 session, recursive=True, recursiveLimit=3, blacklist=["device"]
             )
         }
-        self.response(resp, 201, data, message="Session started")
+
+        self.response(resp, 201, data, message="Usuario creado exitosamente")
         resp.append_header("content_location", f"/users/{user.id}")
 
     def create_user_helper(self, data: dict):
-        if not data.get("password"):
-            return None, "Se necesita el campo password", 400
-
+        role = Role.TEACHER if data.get("is_teacher") == 1 else Role.STUDENT
         password_encrypted = Utils.get_hashed_string(data.get("password"))
         user = User(
             username=data.get("username"),
             password=password_encrypted,
             email=data.get("email"),
-            phone=data.get("phone"),
+            role_id = role,
+            name=data.get("name"),
+            last_name=data.get("last_name"),
+            school_id=data.get("school_id")
         )
         if not user.save():
             return None, self.PROBLEM_SAVING_TO_DB, 500

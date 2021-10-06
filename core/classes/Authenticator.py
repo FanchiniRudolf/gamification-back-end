@@ -135,8 +135,8 @@ class Authenticator(object):
         pass
 
     @staticmethod
-    def login(username, password, device_uuid="unknown"):
-        user = User.get(User.username == username)
+    def login(email, password, device_uuid="unknown"):
+        user = User.get(User.email == email)
         if user:
             password = Utils.get_hashed_string(password)
             if password == user.password:

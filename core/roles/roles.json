@@ -1,18 +1,12 @@
 [
     {
-        "role":"root",
-        "groups":["session", "notifications", "backoffice", "files", "status"],
-        "privileges":["post_passwordrecovery", "post_confirmemail"]
-    },
-    {
-        "role":"user",
-        "groups":["session", "notifications", "backoffice_users", "files", "status"],
-        "privileges":["post_passwordrecovery", "post_confirmemail"]
-    },
-    {
         "role":"teacher",
-        "groups":["session", "notifications", "backoffice_users", "files", "status"],
+        "groups":["session", "notifications", "backoffice", "files", "status", "teacher_actions"],
+        "privileges":["post_passwordrecovery", "post_confirmemail"]
+    },
+    {
+        "role":"student",
+        "groups":["session", "notifications", "backoffice_users", "files", "status", "student_actions"],
         "privileges":["post_passwordrecovery", "post_confirmemail"]
     }
-
 ]
