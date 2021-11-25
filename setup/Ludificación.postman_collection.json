@@ -192,7 +192,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"name\": \"Daniel\",\r\n    \"last_name\": \"Trejo\",\r\n    \"birthday\": \"1998-01-10\",\r\n    \"email\": \"dtrejog98@gmail.com\",\r\n    \"password\": \"restAPI!\",\r\n    \"phone\": \"5528461145\",\r\n    \"device_uuid\": \"1234-5678-9012\"\r\n}",
+							"raw": "{\r\n    \"name\": \"Daniel\",\r\n    \"last_name\": \"Estudiante\",\r\n    \"email\": \"A01372747@itesm.com\",\r\n    \"username\": \"Pachada\",\r\n    \"school_id\": \"A01372747\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -628,7 +628,8 @@
 									"value": "True"
 								}
 							]
-						}
+						},
+						"description": "Trae los grupos activos y no activos de un profesor"
 					},
 					"response": []
 				},
@@ -2239,6 +2240,39 @@
 								}
 							},
 							"response": []
+						},
+						{
+							"name": "POST 100 to all",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "r4R4t2tw6mG7POva6ZlIGZD2zkCBN6Ug2oWe-3ym_Y0",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"group_id\": 4,\r\n    \"mission_id\": 7\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/user-mission/100-to-all",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"user-mission",
+										"100-to-all"
+									]
+								}
+							},
+							"response": []
 						}
 					]
 				},
@@ -2491,13 +2525,13 @@
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "92jkUQCydgX2yQvt72ljdVzcXoTMQ1_IO-4e-O0FK1U",
+								"value": "EP3AjpYvK4oqn4KuIR3c0cjeRkwVHusNC5aJXv0M6lM",
 								"type": "text"
 							}
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"type_id\": 2,\r\n    \"title\": \"Primera Puzzle\",\r\n    \"description\": \"Es la primera misión que los aventureros tendran que efrentar...\",\r\n    \"xp\": 50\r\n}",
+							"raw": "{\r\n    \"type_id\": 2,\r\n    \"title\": \"Diseño maqueta TEC CEM\",\r\n    \"description\": \"Los alumnos deberan de crear una representación a escala del Tec CEM...\",\r\n    \"xp\": 150\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -2529,7 +2563,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"type_id\": 1,\r\n    \"title\": \"Primera Aventura\",\r\n    \"description\": \"Es la primera misión que los aventureros tendran que efrentar...\",\r\n    \"start_date\": \"11-11-2021 15:00:00\",\r\n    \"delivery_date\": \"20-11-2021 23:59:59\",\r\n    \"points\": 100,\r\n    \"xp\": 50,\r\n    \"coins\": 100,\r\n    \"hp\": 500\r\n}",
+							"raw": "{\r\n    \"teacher_id\": 10,\r\n    \"type_id\": 1,\r\n    \"title\": \"Diseño maqueta TEC CEM\",\r\n    \"description\": \"Los alumnos deberan de crear una representación a escala del Tec CEM...\",\r\n    \"xp\": 150\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
