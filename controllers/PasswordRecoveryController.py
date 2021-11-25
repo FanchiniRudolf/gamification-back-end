@@ -21,12 +21,12 @@ class PasswordRecoveryController(Controller):
             self.response(resp, 400, error=str(exc))
             return
 
-        username = data.get("username")
-        if not username:
-            self.response(resp, 400, error="username needed")
+        email = data.get("email")
+        if not email:
+            self.response(resp, 400, error="email needed")
             return
 
-        user = User.get(User.username == username)
+        user = User.get(User.email == email)
         if not user:
             self.response(resp, 404, error="User not found")
             return
@@ -40,16 +40,11 @@ class PasswordRecoveryController(Controller):
         data_for_email = {"otp": user.otp}
 
         client = SmtpClient.get_instance()
-        if Utils.check_if_valid_email(username):
-            client.send_email_to_pool(
-                username, data_for_email, EmailTemplate.PASSWORD_RECOVERY
-            )
-        else:
-            client.send_email_to_pool(
-                user.email, data_for_email, EmailTemplate.PASSWORD_RECOVERY
-            )
+        client.send_email_to_pool(
+            user.email, data_for_email, EmailTemplate.PASSWORD_RECOVERY
+        )
 
-        self.response(resp, 200, message="OTP saved successfully")
+        self.response(resp, 201, message="OTP saved successfully")
 
     def __validate_code(self, req: Request, resp: Response):
         try:

@@ -1,23 +1,23 @@
 {
-    "name": "get_user_group",
+    "name": "get_user_mission",
     "method": "GET",
-    "resource": "User_GroupController"
+    "resource": "User_MissionController"
 },
 {
-    "name": "post_user_group",
+    "name": "post_user_mission",
     "method": "POST",
-    "resource": "User_GroupController"
+    "resource": "User_MissionController"
 },
 {
-    "name": "put_user_group",
+    "name": "put_user_mission",
     "method": "PUT",
-    "resource": "User_GroupController"
+    "resource": "User_MissionController"
 },
 {
-    "name": "delete_user_group",
+    "name": "delete_user_mission",
     "method": "DELETE",
-    "resource": "User_GroupController"
+    "resource": "User_MissionController"
 }
 
 
- "get_user_group", "put_user_group", "post_user_group", "delete_user_group"
+ "get_user_mission", "put_user_mission", "post_user_mission", "delete_user_mission"

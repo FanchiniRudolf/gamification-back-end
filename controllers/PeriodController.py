@@ -6,7 +6,7 @@ class PeriodController(Controller):
 
     def on_get(self, req: Request, resp: Response, id: int=None):
         filter = Period.teacher_id == req.context.session.user.id
-        super().generic_on_get(req, resp, Period, id, filters=filter)
+        super().generic_on_get(req, resp, Period, id, filters=filter, order_by=Period.id.desc())
     
     def on_post(self, req: Request, resp: Response, id: int = None):
         try:

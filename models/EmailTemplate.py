@@ -6,6 +6,7 @@ class EmailTemplate(Base, Model):
     # Templates                  #Data
     PASSWORD_RECOVERY = 1       # {{otp}}
     CONFIRM_EMAIL = 2           # {{email_confirmation_code}}
+    NEW_USER = 3                # {{username}} {{password}}
 
     __tablename__ = "email_template"
 

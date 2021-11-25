@@ -14,6 +14,10 @@ from controllers.PeriodController import PeriodController
 from controllers.CourseController import CourseController
 from controllers.GroupController import GroupController
 from controllers.User_GroupController import User_GroupController
+from controllers.MissionTypeController import MissionTypeController
+from controllers.MissionController import MissionController
+from controllers.Mission_GroupController import Mission_GroupController
+from controllers.User_MissionController import User_MissionController
 
 
 testController = TestController()
@@ -32,3 +36,7 @@ periodController = PeriodController()
 courseController = CourseController()
 groupController = GroupController()
 user_groupController = User_GroupController()
+missiontypeController = MissionTypeController()
+missionController = MissionController()
+missiongroupController = Mission_GroupController()
+usermissionController = User_MissionController()

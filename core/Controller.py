@@ -74,6 +74,9 @@ class Controller:
         filters=None,
         join=None,
         order_by=None,
+        recursive=False,
+        recursive_limit=2, 
+        blacklist=[]
     ):
         if id:
             row = model.get(id)
@@ -83,10 +86,10 @@ class Controller:
         else:
             row = model.getAll(filters, join=join, orderBy=order_by)
 
-        self.response(resp, 200, Utils.serialize_model(row))
+        self.response(resp, 200, Utils.serialize_model(row, recursive=recursive, recursiveLimit=recursive_limit))
 
     def generic_on_post(
-        self, req: Request, resp: Response, model, content_location, id: int = None, data = None, extra_data: dict = {}
+        self, req: Request, resp: Response, model, content_location=None, id: int = None, data = None, extra_data: dict = {}
     ):
         if id:
             self.response(resp, 405)
@@ -109,7 +112,8 @@ class Controller:
             return
 
         self.response(resp, 201, Utils.serialize_model(new_record))
-        resp.append_header("content_location", f"/{content_location}/{new_record.id}")
+        if content_location:
+            resp.append_header("content_location", f"/{content_location}/{new_record.id}")
 
     def generic_on_put(
         self, req: Request, resp: Response, model, id: int = None, extra_data: dict = {}

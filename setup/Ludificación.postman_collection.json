@@ -235,6 +235,39 @@
 						}
 					},
 					"response": []
+				},
+				{
+					"name": "Post Students to Group",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "ejM-MMBHzQtaNMFJ7K6UyMKp_kscWORjsHKsn6rj2Jw",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": [\"A01372747@exatec.tec.mx\"],\r\n    \"group_id\": 4\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/users/group",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"users",
+								"group"
+							]
+						}
+					},
+					"response": []
 				}
 			]
 		},
@@ -248,7 +281,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"username\": \"daniel.trejo\"\r\n}",
+							"raw": "{\r\n    \"email\": \"dtrejog98@gmail.com\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -451,7 +484,7 @@
 			]
 		},
 		{
-			"name": "Courses",
+			"name": "Materia",
 			"item": [
 				{
 					"name": "GET All Courses of the user",
@@ -571,29 +604,6 @@
 			"name": "Groups",
 			"item": [
 				{
-					"name": "GET all active Groups",
-					"request": {
-						"method": "GET",
-						"header": [
-							{
-								"key": "Authorization",
-								"value": "",
-								"type": "text"
-							}
-						],
-						"url": {
-							"raw": "{{base_url}}/groups",
-							"host": [
-								"{{base_url}}"
-							],
-							"path": [
-								"groups"
-							]
-						}
-					},
-					"response": []
-				},
-				{
 					"name": "GET All Groups active and not active",
 					"request": {
 						"method": "GET",
@@ -706,7 +716,7 @@
 					"response": []
 				},
 				{
-					"name": "GET Group and all of its info",
+					"name": "GET Group",
 					"request": {
 						"method": "GET",
 						"header": [
@@ -824,7 +834,7 @@
 			"name": "User_Group",
 			"item": [
 				{
-					"name": "GET User Groups",
+					"name": "GET Active User Groups",
 					"request": {
 						"method": "GET",
 						"header": [
@@ -841,6 +851,69 @@
 							],
 							"path": [
 								"users_groups"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET not active user groups",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/users_groups?finished=True",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"users_groups"
+							],
+							"query": [
+								{
+									"key": "finished",
+									"value": "True"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET Info of an enrollment",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "DFXQOGkK9AtaZJNMhtmBNOLjMER-safpfcqpr0HuKKY",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/users_groups/student-info?group_id=4&student_id=9",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"users_groups",
+								"student-info"
+							],
+							"query": [
+								{
+									"key": "group_id",
+									"value": "4"
+								},
+								{
+									"key": "student_id",
+									"value": "9"
+								}
 							]
 						}
 					},
@@ -2051,6 +2124,454 @@
 							"response": []
 						}
 					]
+				}
+			]
+		},
+		{
+			"name": "Missions",
+			"item": [
+				{
+					"name": "User Mission",
+					"item": [
+						{
+							"name": "GET User Mission",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "foKHIfI4uC10XNA_EEP4ZsbQ5IfIOOcNNRk0JNMdtTc",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{base_url}}/user-mission?enrollment_id=1&mission_id=4",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"user-mission"
+									],
+									"query": [
+										{
+											"key": "enrollment_id",
+											"value": "1"
+										},
+										{
+											"key": "mission_id",
+											"value": "4"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "POST User Mission",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "foKHIfI4uC10XNA_EEP4ZsbQ5IfIOOcNNRk0JNMdtTc",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"enrollment_id\": 1,\r\n    \"mission_id\": 4,\r\n    \"grade\": 80,\r\n    \"coins\": 0,\r\n    \"comments\": \"La peor misión que he visto\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/user-mission",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"user-mission"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "PUT User Mission",
+							"request": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "foKHIfI4uC10XNA_EEP4ZsbQ5IfIOOcNNRk0JNMdtTc",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"grade\": 80,\r\n    \"coins\": 0,\r\n    \"comments\": \"La peor misión que he visto\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/user-mission?enrollment_id=1&mission_id=4",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"user-mission"
+									],
+									"query": [
+										{
+											"key": "enrollment_id",
+											"value": "1"
+										},
+										{
+											"key": "mission_id",
+											"value": "4"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Mission Types",
+					"item": [
+						{
+							"name": "GET Mission Types",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "mhRbbv4R3dKgd2dFCqydRCVtBw_SAz7Gr3KxIsrru7E",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{base_url}}/missions-type",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"missions-type"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "POST Mission Type",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "mhRbbv4R3dKgd2dFCqydRCVtBw_SAz7Gr3KxIsrru7E",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\": \"Puzzle\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/missions-type",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"missions-type"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Mission to Group",
+					"item": [
+						{
+							"name": "GET all missions of a Group (TAB Mision)",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "92jkUQCydgX2yQvt72ljdVzcXoTMQ1_IO-4e-O0FK1U",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{base_url}}/missions-to-groups/4",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"missions-to-groups",
+										"4"
+									],
+									"query": [
+										{
+											"key": "Authorizarti",
+											"value": null,
+											"disabled": true
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "GET Mission Group Info (Mision especifica)",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "92jkUQCydgX2yQvt72ljdVzcXoTMQ1_IO-4e-O0FK1U",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{base_url}}/missions-to-groups/4?mission_id=2",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"missions-to-groups",
+										"4"
+									],
+									"query": [
+										{
+											"key": "mission_id",
+											"value": "2"
+										},
+										{
+											"key": "Authorizarti",
+											"value": null,
+											"disabled": true
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "POST Mission to Group",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "PpnvFacsvcppq_XDQNskzLQSZrejEy8DR_KTwxDwZ_s",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"mission_id\": 2,\r\n    \"group_id\": 4,\r\n    \"start_date\": \"11-11-2021 15:00:00\",\r\n    \"delivery_date\": \"20-11-2021 23:59:59\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/missions-to-groups",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"missions-to-groups"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "DELETE Mission to Group",
+							"request": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "92jkUQCydgX2yQvt72ljdVzcXoTMQ1_IO-4e-O0FK1U",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"mission_id\": 1,\r\n    \"group_id\": 4\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/missions-to-groups",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"missions-to-groups"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Get All Missions of a teacher",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "PpnvFacsvcppq_XDQNskzLQSZrejEy8DR_KTwxDwZ_s",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/missions",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"missions"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET Mission",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "92jkUQCydgX2yQvt72ljdVzcXoTMQ1_IO-4e-O0FK1U",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/missions/1",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"missions",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "POST Mission",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "92jkUQCydgX2yQvt72ljdVzcXoTMQ1_IO-4e-O0FK1U",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"type_id\": 2,\r\n    \"title\": \"Primera Puzzle\",\r\n    \"description\": \"Es la primera misión que los aventureros tendran que efrentar...\",\r\n    \"xp\": 50\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/missions",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"missions"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "PUT Mission",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "92jkUQCydgX2yQvt72ljdVzcXoTMQ1_IO-4e-O0FK1U",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"type_id\": 1,\r\n    \"title\": \"Primera Aventura\",\r\n    \"description\": \"Es la primera misión que los aventureros tendran que efrentar...\",\r\n    \"start_date\": \"11-11-2021 15:00:00\",\r\n    \"delivery_date\": \"20-11-2021 23:59:59\",\r\n    \"points\": 100,\r\n    \"xp\": 50,\r\n    \"coins\": 100,\r\n    \"hp\": 500\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/missions/1",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"missions",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DELETE Mission",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "92jkUQCydgX2yQvt72ljdVzcXoTMQ1_IO-4e-O0FK1U",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/missions/1",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"missions",
+								"1"
+							]
+						}
+					},
+					"response": []
 				}
 			]
 		},

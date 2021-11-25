@@ -10,10 +10,13 @@ class User_Group(Base, Model):
     id = Column(BigInteger, primary_key=True, autoincrement=True)
     group_id = Column(BigInteger, ForeignKey(Group.id), nullable=False) 
     student_id = Column(BigInteger, ForeignKey(User.id), nullable=False)
-    hp = Column(Integer, default=0)
     xp = Column(Integer, default=0)
     coins = Column(Integer, default=0)
     enable = Column(mysql.TINYINT(1), default=1)
     
     group = relationship(Group)
     student = relationship(User)
+
+
+    def __repr__(self):
+        return f'{self.student.username}'

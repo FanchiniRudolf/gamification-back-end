@@ -33,6 +33,16 @@ class RouteLoader():
         self.server.add_route(self.context_prefix + '/groups/acces_code/{id:int}', groupController, suffix="otp")
         self.server.add_route(self.context_prefix + '/users_groups', user_groupController)
         self.server.add_route(self.context_prefix + '/users_groups/{id:int}', user_groupController)
+        self.server.add_route(self.context_prefix + '/users_groups/student-info', user_groupController, suffix='user_info')
+        self.server.add_route(self.context_prefix + '/missions-type', missiontypeController)
+        self.server.add_route(self.context_prefix + '/missions-type/{id:int}', missiontypeController)
+        self.server.add_route(self.context_prefix + '/missions', missionController)
+        self.server.add_route(self.context_prefix + '/missions/{id:int}', missionController)
+        self.server.add_route(self.context_prefix + '/missions-to-groups', missiongroupController)
+        self.server.add_route(self.context_prefix + '/missions-to-groups/{id:int}', missiongroupController)
+        self.server.add_route(self.context_prefix + '/user-mission', usermissionController)
+        self.server.add_route(self.context_prefix + '/user-mission/{id:int}', usermissionController)
+        self.server.add_route(self.context_prefix + '/user-mission/100-to-all', usermissionController, suffix='100_to_all')
 
         self.server.add_route(self.context_prefix + '/test', testController)
         self.server.add_route(self.context_prefix + '/health-check/{action}', healthcheckController) #ping
@@ -56,6 +66,7 @@ class RouteLoader():
         #BackOffice
         self.server.add_route(self.context_prefix + '/users', userController)
         self.server.add_route(self.context_prefix + '/users/{id:int}', userController)
+        self.server.add_route(self.context_prefix + '/users/group', userController, suffix="user_group")
         self.server.add_route(self.context_prefix + '/roles', roleController)
         self.server.add_route(self.context_prefix + '/roles/{id:int}', roleController)
         self.server.add_route(self.context_prefix + '/devices', deviceController)

@@ -248,6 +248,86 @@
         "name": "delete_user_group",
         "method": "DELETE",
         "resource": "User_GroupController"
+    },
+    {
+        "name": "get_mission_type",
+        "method": "GET",
+        "resource": "MissionTypeController"
+    },
+    {
+        "name": "post_mission_type",
+        "method": "POST",
+        "resource": "MissionTypeController"
+    },
+    {
+        "name": "put_mission_type",
+        "method": "PUT",
+        "resource": "MissionTypeController"
+    },
+    {
+        "name": "delete_mission_type",
+        "method": "DELETE",
+        "resource": "MissionTypeController"
+    },
+    {
+        "name": "get_mission",
+        "method": "GET",
+        "resource": "MissionController"
+    },
+    {
+        "name": "post_mission",
+        "method": "POST",
+        "resource": "MissionController"
+    },
+    {
+        "name": "put_mission",
+        "method": "PUT",
+        "resource": "MissionController"
+    },
+    {
+        "name": "delete_mission",
+        "method": "DELETE",
+        "resource": "MissionController"
+    },
+    {
+        "name": "get_mission_group",
+        "method": "GET",
+        "resource": "Mission_GroupController"
+    },
+    {
+        "name": "post_mission_group",
+        "method": "POST",
+        "resource": "Mission_GroupController"
+    },
+    {
+        "name": "put_mission_group",
+        "method": "PUT",
+        "resource": "Mission_GroupController"
+    },
+    {
+        "name": "delete_mission_group",
+        "method": "DELETE",
+        "resource": "Mission_GroupController"
+    },
+    {
+        "name": "get_user_mission",
+        "method": "GET",
+        "resource": "User_MissionController"
+    },
+    {
+        "name": "post_user_mission",
+        "method": "POST",
+        "resource": "User_MissionController"
+    },
+    {
+        "name": "put_user_mission",
+        "method": "PUT",
+        "resource": "User_MissionController"
+    },
+    {
+        "name": "delete_user_mission",
+        "method": "DELETE",
+        "resource": "User_MissionController"
     }
 
 

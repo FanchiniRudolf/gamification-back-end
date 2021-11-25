@@ -1,14 +1,48 @@
 from core.Controller import Controller, Utils, Request, Response, json, datetime
 from models.User_Group import User_Group, User, Group, and_
+from models.Period import Period
 
 
 class User_GroupController(Controller):
 
-    def on_get(self, req: Request, resp: Response, id: int = None):
+    def on_get_user_info(self, req: Request, resp: Response, id: int = None):
+        query_string = req.params
+        user_group = User_Group.get(and_(
+            User_Group.group_id == int(query_string.get('group_id')),
+            User_Group.student_id == int(query_string.get('student_id'))
+            )
+        )
+
+        if not user_group:
+            self.response(resp, 404)
+            return
+        
+        self.response(resp, 200, Utils.serialize_model(user_group, recursive=True, recursiveLimit=2))
+    
+
+    def get_query_strings(self, req: Request, resp: Response, data: dict):
         student = req.context.session.user
-        groups = Group.getAll(
-            User_Group.student_id == student.id
-            ,join=User_Group
+        filters= [User_Group.student_id == student.id]
+        if data.get("finished") == "True":
+            today = datetime.utcnow()
+            filters.append(Period.end_date < today)
+        
+        groups = Group.getAll(and_(*filters), join=[User_Group, Period])
+        self.response(resp, 200, Utils.serialize_model(groups, recursive=True, recursiveLimit=3))
+
+    def on_get(self, req: Request, resp: Response, id: int = None):
+        query_strings = req.params
+        if query_strings:
+            return self.get_query_strings(req, resp, query_strings)
+
+        student = req.context.session.user
+        today = datetime.utcnow()
+        groups = Group.getAll(and_(
+            User_Group.student_id == student.id,
+            User_Group.enable == 1,
+            Period.end_date >= today
+        ),
+            join=[User_Group, Period]
         )
         self.response(resp, 200, Utils.serialize_model(groups, recursive=True, recursiveLimit=3))
 
@@ -36,6 +70,16 @@ class User_GroupController(Controller):
         
         if not Utils.validate_otp(group.otp_time):
             self.response(resp, 409, error="Este otp ya expiró")
+            return
+
+        user_group = User_Group.get(and_(
+            User_Group.group_id==group.id,
+            User_Group.student_id==req.context.session.user.id
+            )
+        )
+
+        if user_group:
+            self.response(resp, 409, error="Este usuario ya esta en el grupo")
             return
 
         user_group = User_Group(

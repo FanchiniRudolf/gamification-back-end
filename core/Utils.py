@@ -79,12 +79,8 @@ class Utils:
             date = Utils.string_to_datetime(date)
 
         # Transfor the datetime object with time zone America/Mexico_City to UTC0
-        print(date)
-        print(date.tzinfo)
         if not date.tzinfo:
             date = pytz.timezone(date_tz).localize(date)
-            print(date)
-            print(date.tzinfo)
 
         return date.astimezone(pytz.utc)
 
@@ -332,7 +328,7 @@ class Utils:
 
     @staticmethod
     def check_if_valid_email(email):
-        regex = "^[a-z0-9]+[\._]?[a-z0-9]+[@]\w+[.]\w+$"
+        regex = r"\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Z|a-z]{2,}\b"
         return bool(re.search(regex, email))
 
     @staticmethod

@@ -8,14 +8,13 @@ class SmtpClient:
     @staticmethod
     def get_instance():
         if not SmtpClient.__instance:
-            SmtpClient()
+            return SmtpClient()
         return SmtpClient.__instance
 
     def __init__(self):
         if SmtpClient.__instance is not None:
             return SmtpClient.__instance
-        else:
-            SmtpClient.__instance = self
+        SmtpClient.__instance = self
 
     def send_email_to_pool(
         self,

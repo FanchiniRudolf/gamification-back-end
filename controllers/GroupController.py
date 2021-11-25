@@ -1,11 +1,11 @@
 from core.Controller import Controller, Utils, Request, Response, json, datetime
-from models.Group import Group, Course, Period
+from models.Group import Group, Course, Period, and_
 from models.User_Group import User_Group, User
 
 
 class GroupController(Controller):
     def get_query_string(self, req: Request, resp: Response, data: dict):
-        filters = []
+        filters = [Course.teacher_id == req.context.session.user.id]
         if data.get("period_id"):
             filters.append(Group.period_id == int(data.get("period_id")))
 
@@ -16,14 +16,13 @@ class GroupController(Controller):
 
         #TODO Query string para jalar toda la info del grupo/os
 
-        groups = Group.getAll(*filters, deleted=deleted)
-        self.response(resp, 200, Utils.serialize_model(groups))
+        groups = Group.getAll(and_(*filters), deleted=deleted, join=Course)
+        self.response(resp, 200, Utils.serialize_model(groups, recursive=True, recursiveLimit=2))
     
     def get_group_info(self, group):
         data = Utils.serialize_model(group, recursive=True, recursiveLimit=2)
         users_of_the_group = User_Group.getAll(User_Group.group_id == group.id, orderBy=User_Group.xp.desc())
         data["students"] = Utils.serialize_model(users_of_the_group, recursive=True, recursiveLimit=2, blacklist=["group"])
-        data["misiones"] = []
         return data
 
     def on_get(self, req: Request, resp: Response, id: int = None):

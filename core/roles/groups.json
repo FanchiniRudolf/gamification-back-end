@@ -10,7 +10,7 @@
             "get_person", "post_person", "delete_person", "put_person",
             "post_role", "get_role", "delete_role", "put_role",
             "get_devices", "put_devices"
-                ]
+        ]
     },
     {
         "group":"backoffice_users",
@@ -19,7 +19,7 @@
             "get_person", "post_person", "put_person",
             "get_role",
             "get_devices", "put_devices"
-                ]
+        ]
     },
     {
         "group": "files",
@@ -47,13 +47,19 @@
             "get_period", "put_period", "post_period", "delete_period",
             "get_course", "put_course", "post_course", "delete_course",
             "get_group", "put_group", "post_group", "delete_group",
-            "get_user_group", "put_user_group", "post_user_group", "delete_user_group"
+            "get_user_group", "put_user_group", "post_user_group", "delete_user_group",
+            "get_mission_type", "put_mission_type", "post_mission_type", "delete_mission_type",
+            "get_mission", "put_mission", "post_mission", "delete_mission",
+            "get_mission_group", "put_mission_group", "post_mission_group", "delete_mission_group",
+            "get_user_mission", "put_user_mission", "post_user_mission", "delete_user_mission"
+            
         ]
     },
     {
         "group":"student_actions",
         "privileges":[
-            "get_group", "get_user_group", "post_user_group"
+            "get_group", "get_user_group", "post_user_group", "get_mission_type", "get_mission", "get_mission_group",
+            "get_user_mission"
         ]
     }
     
